@@ -3,8 +3,8 @@
 ### 代理：
 - - (void)passwordInputView:(SLPasswordInputView *)inputView willBeginInputWithPassword:(NSString *)password;
 - - (void)passwordInputView:(SLPasswordInputView *)inputView willEndInputWithPassword:(NSString *)password;
-- - (void)passwordInputView:(SLPasswordInputView *)inputView didChangedInputWithPassword:(NSString *)password;
-- -(void)passwordInputView:(SLPasswordInputView *)inputView didFinishedInputWithPassword:(NSString *)password;
+- - (void)passwordInputView:(SLPasswordInputView *)inputView didChangeInputWithPassword:(NSString *)password;
+- -(void)passwordInputView:(SLPasswordInputView *)inputView didFinishInputWithPassword:(NSString *)password;
 
 ### 属性
 - 密码长度
