@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
   #   * Try to keep it short, snappy and to the point.
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
-  s.description  = "一个密码输入控件，仿微信支付。使用简单，可定制性高" 
+  s.description  = "A password input view, easy to use. 一个密码输入控件，仿微信支付。使用简单，可定制性高" 
                   
 
   s.homepage     = "https://github.com/Coderzhangsl/SLPasswordInputView"
@@ -90,8 +90,8 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "SLPasswordInputView", ""SLPasswordInputView/**/*.{h,m}""
-  s.exclude_files = "Classes/Exclude"
+  s.source_files  = "SLPasswordInputView-Demo/SLPasswordInputView-Demo/SLPasswordInputView", "SLPasswordInputView-Demo/SLPasswordInputView-Demo/SLPasswordInputView/**/*.{h,m}"
+  #  s.exclude_files = "Classes/Exclude"
 
   # s.public_header_files = "Classes/**/*.h"
 
