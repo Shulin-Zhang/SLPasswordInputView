@@ -61,11 +61,11 @@
     NSLog(@"inputEnd");
 }
 
-- (void)passwordInputView:(SLPasswordInputView *)inputView didChangedInputWithPassword:(NSString *)password {
+- (void)passwordInputView:(SLPasswordInputView *)inputView didChangeInputWithPassword:(NSString *)password {
     NSLog(@"inputChanged, passwd:%@", password);
 }
 
-- (void)passwordInputView:(SLPasswordInputView *)inputView didFinishedInputWithPassword:(NSString *)password {
+- (void)passwordInputView:(SLPasswordInputView *)inputView didFinishInputWithPassword:(NSString *)password {
     NSLog(@"inputFinished, passwd:%@", password);
 }
 

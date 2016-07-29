@@ -114,14 +114,14 @@
 }
 
 - (void)callDelegateWhenInputChange {
-    if ([self.delegate respondsToSelector:@selector(passwordInputView:didChangedInputWithPassword:)]) {
-        [self.delegate passwordInputView:self didChangedInputWithPassword:self.passwordText];
+    if ([self.delegate respondsToSelector:@selector(passwordInputView:didChangeInputWithPassword:)]) {
+        [self.delegate passwordInputView:self didChangeInputWithPassword:self.passwordText];
     }
 }
 
 - (void)callDelegateWhenInputFinshed {
-    if ([self.delegate respondsToSelector:@selector(passwordInputView:didFinishedInputWithPassword:)]) {
-        [self.delegate passwordInputView:self didFinishedInputWithPassword:self.passwordText];
+    if ([self.delegate respondsToSelector:@selector(passwordInputView:didFinishInputWithPassword:)]) {
+        [self.delegate passwordInputView:self didFinishInputWithPassword:self.passwordText];
     }
 }
 
