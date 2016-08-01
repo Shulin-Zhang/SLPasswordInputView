@@ -34,19 +34,29 @@
     inputView2.passwordColor = [UIColor cyanColor];
     inputView2.passwordWidth = 15;
     inputView2.delegate = self;
-    inputView2.keyboardType = UIKeyboardTypeDefault;
+    inputView2.keyboardType = UIKeyboardTypeAlphabet;
     [self.view addSubview:inputView2];
     
     SLPasswordInputView *inputView3 = [[SLPasswordInputView alloc] initWithFrame:CGRectMake(10, 178, kSLScreenWidth - 20, 88)];
-    inputView3.passwordImage = [UIImage imageNamed:@"cat"];
+    inputView3.backgroundColor = [UIColor cyanColor];
+    inputView3.passwordColor = [UIColor yellowColor];
     inputView3.passwordLength = 5;
-    inputView3.passwordWidth = 30;
+    inputView3.borderColor = [UIColor grayColor];
+    inputView3.contentInsets = UIEdgeInsetsMake(10, 10, 10, 10);
     inputView3.borderCornerRadius = 10;
-    inputView3.borderColor = [UIColor orangeColor];
-    inputView3.borderWidth = 3;
-    inputView3.keyboardType = UIKeyboardTypeAlphabet;
     inputView3.delegate = self;
     [self.view addSubview:inputView3];
+    
+    SLPasswordInputView *inputView4 = [[SLPasswordInputView alloc] initWithFrame:CGRectMake(10, 286, kSLScreenWidth - 20, 88)];
+    inputView4.passwordImage = [UIImage imageNamed:@"cat.jpg"];
+    inputView4.passwordLength = 5;
+    inputView4.passwordWidth = 30;
+    inputView4.borderCornerRadius = 10;
+    inputView4.borderColor = [UIColor orangeColor];
+    inputView4.borderWidth = 3;
+    inputView4.keyboardType = UIKeyboardTypeAlphabet;
+    inputView4.delegate = self;
+    [self.view addSubview:inputView4];
 }
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {

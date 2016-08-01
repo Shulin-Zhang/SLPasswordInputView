@@ -33,7 +33,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) UIColor *passwordColor;
 /** 密码字符图片（正方形图片，默认为黑色圆点） */
 @property (strong, nonatomic) UIImage *passwordImage;
-
 /** 显示边框 */
 @property (assign, nonatomic) BOOL showBorder;
 /** 边框圆角大小 */
@@ -42,15 +41,14 @@ NS_ASSUME_NONNULL_BEGIN
 @property (assign, nonatomic) CGFloat borderWidth;
 /** 边框颜色 */
 @property (strong, nonatomic) UIColor *borderColor;
-
 /** 键盘类型 */
 @property (assign, nonatomic) UIKeyboardType keyboardType;
 /** 返回按钮类型 */
 @property (assign, nonatomic) UIReturnKeyType returnKeyType;
-
 /** 密码文本 */
 @property (copy, nonatomic, nullable) NSString *passwordText;
-
+/** 内边距 */
+@property (assign, nonatomic) UIEdgeInsets contentInsets;
 /** 代理 */
 @property (weak, nonatomic) id<SLPasswordInputViewDelegate> delegate;
 

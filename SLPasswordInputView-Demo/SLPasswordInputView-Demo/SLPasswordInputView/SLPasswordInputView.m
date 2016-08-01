@@ -24,21 +24,33 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        _passwordLength = 8;
-        _passwordWidth = 17;
-        _passwordColor = [UIColor blackColor];
-        _passwordImage = [UIImage sl_dotImageWithColor:_passwordColor radius:_passwordWidth * 0.5];
-        _showBorder = YES;
-        _borderCornerRadius = 0;
-        _borderWidth = 1;
-        _borderColor = [UIColor lightGrayColor];
-        _keyboardType = UIKeyboardTypeNumberPad;
-        _returnKeyType = UIReturnKeyDefault;
-        _passwordStore = [NSMutableString string];
-        self.backgroundColor = [UIColor whiteColor];
+        [self commonInit];
     }
     
     return self;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self commonInit];
+    }
+    
+    return self;
+}
+
+- (void)commonInit {
+    _passwordLength = 8;
+    _passwordWidth = 17;
+    _passwordColor = [UIColor blackColor];
+    _showBorder = YES;
+    _borderCornerRadius = 0;
+    _borderWidth = 1;
+    _borderColor = [UIColor lightGrayColor];
+    _keyboardType = UIKeyboardTypeNumberPad;
+    _returnKeyType = UIReturnKeyDefault;
+    _passwordStore = [NSMutableString string];
+    self.backgroundColor = [UIColor whiteColor];
 }
 
 //------------------------------------------------------------------------------
@@ -50,16 +62,20 @@
 }
 
 - (void)drawRect:(CGRect)rect {
-    CGFloat rectWidth = rect.size.width / self.passwordLength;
-    CGFloat rectHeight = rect.size.height;
-    CGFloat rectNumber = self.passwordLength;
+    CGRect drawRect = UIEdgeInsetsInsetRect(rect, self.contentInsets);
+    CGFloat drawRectX = drawRect.origin.x;
+    CGFloat drawRectY = drawRect.origin.y;
+    CGFloat charRectWidth = drawRect.size.width / self.passwordLength;
+    CGFloat charRectHeight = drawRect.size.height;
+    CGFloat charNumber = self.passwordLength;
+    UIImage *drawImage = self.passwordImage ? : [UIImage sl_dotImageWithColor:self.passwordColor radius:self.passwordWidth * 0.5];
     
     if (self.showBorder) {
-        UIBezierPath *borderPath = [UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:self.borderCornerRadius];
+        UIBezierPath *borderPath = [UIBezierPath bezierPathWithRoundedRect:drawRect cornerRadius:self.borderCornerRadius];
         
-        for (int i = 1; i < rectNumber; i++) {
-            [borderPath moveToPoint:CGPointMake(rectWidth * i, 0)];
-            [borderPath addLineToPoint:CGPointMake(rectWidth * i, rectHeight)];
+        for (int i = 1; i < charNumber; i++) {
+            [borderPath moveToPoint:CGPointMake(drawRectX + charRectWidth * i, drawRectY)];
+            [borderPath addLineToPoint:CGPointMake(drawRectX + charRectWidth * i, drawRectY + charRectHeight)];
         }
         
         borderPath.lineWidth = self.borderWidth;
@@ -68,21 +84,23 @@
         [borderPath stroke];
     }
     
-    CGFloat pcX = rectWidth * 0.5 - self.passwordWidth * 0.5;
-    CGFloat pcY = rectHeight * 0.5 - self.passwordWidth * 0.5;
+    CGFloat pcX = drawRectX + charRectWidth * 0.5 - self.passwordWidth * 0.5;
+    CGFloat pcY = drawRectY + charRectHeight * 0.5 - self.passwordWidth * 0.5;
     CGFloat pcW = self.passwordWidth;
     CGFloat pcH = self.passwordWidth;
     CGRect passwordCharRect = CGRectMake(pcX, pcY, pcW, pcH);
     
-    passwordCharRect.origin.x -= rectWidth;
+    passwordCharRect.origin.x -= charRectWidth;
     for (int i = 0; i < self.passwordStore.length; i++) {
-        passwordCharRect.origin.x += rectWidth;
-        [self.passwordImage drawInRect:passwordCharRect];
+        passwordCharRect.origin.x += charRectWidth;
+        [drawImage drawInRect:passwordCharRect];
     }
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [self becomeFirstResponder];
+    if (!self.isFirstResponder) {
+        [self becomeFirstResponder];
+    }
 }
 
 - (BOOL)becomeFirstResponder {
@@ -166,7 +184,6 @@
 
 - (void)setPasswordColor:(UIColor *)passwordColor {
     _passwordColor = passwordColor;
-    _passwordImage = [UIImage sl_dotImageWithColor:passwordColor radius:self.passwordWidth * 0.5];
     
     [self setNeedsDisplay];
 }
@@ -219,6 +236,12 @@
     } else {
         self.passwordStore = [passwordText mutableCopy];
     }
+    
+    [self setNeedsDisplay];
+}
+
+- (void)setContentInsets:(UIEdgeInsets)contentInsets {
+    _contentInsets = contentInsets;
     
     [self setNeedsDisplay];
 }
