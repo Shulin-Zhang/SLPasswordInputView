@@ -32,4 +32,4 @@
 - 内边距
 - @property (assign, nonatomic) UIEdgeInsets contentInsets;
 
-![picture](https://github.com/Coderzhangsl/SLPasswordInputView/blob/master/Pictures/demo_picture.png)
+![picture](https://github.com/Coderzhangsl/SLPasswordInputView/blob/master/Pictures/demo_picture_1.png)
