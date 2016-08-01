@@ -29,5 +29,7 @@
 - @property (assign, nonatomic) UIReturnKeyType returnKeyType;
 - 密码文本
 - @property (copy, nonatomic, nullable) NSString *passwordText;
+- 内边距
+- @property (assign, nonatomic) UIEdgeInsets contentInsets;
 
-![picture](https://github.com/Coderzhangsl/SLPasswordInputView/blob/master/Pictures/Simulator%20Screen%20Shot%202016%E5%B9%B47%E6%9C%8829%E6%97%A5%20%E4%B8%8B%E5%8D%883.47.37.png)
+![picture](https://github.com/Coderzhangsl/SLPasswordInputView/blob/master/Pictures/demo_picture.png)
