@@ -1,9 +1,9 @@
 # SLPasswordInputView
 
 ### 代理：
-- - (void)passwordInputView:(SLPasswordInputView *)inputView willBeginInputWithPassword:(NSString *)password;
-- - (void)passwordInputView:(SLPasswordInputView *)inputView willEndInputWithPassword:(NSString *)password;
-- - (void)passwordInputView:(SLPasswordInputView *)inputView didChangeInputWithPassword:(NSString *)password;
+- -(void)passwordInputView:(SLPasswordInputView *)inputView willBeginInputWithPassword:(NSString *)password;
+- -(void)passwordInputView:(SLPasswordInputView *)inputView willEndInputWithPassword:(NSString *)password;
+- -(void)passwordInputView:(SLPasswordInputView *)inputView didChangeInputWithPassword:(NSString *)password;
 - -(void)passwordInputView:(SLPasswordInputView *)inputView didFinishInputWithPassword:(NSString *)password;
 
 ### 属性
